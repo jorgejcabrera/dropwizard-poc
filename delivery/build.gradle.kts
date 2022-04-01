@@ -2,7 +2,7 @@ plugins {
     application
 }
 
-val dropwizardVersion = "2.0.28"
+val dropwizardVersion: String by rootProject
 dependencies {
     implementation("io.dropwizard:dropwizard-core:$dropwizardVersion")
 }
@@ -18,8 +18,6 @@ apply(plugin = "application")
 application {
     mainClassName = "to.dev.example.MainAppKt"
 }
-
-
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()

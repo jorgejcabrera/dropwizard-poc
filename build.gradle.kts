@@ -21,7 +21,7 @@ subprojects {
         mavenCentral()
     }
 
-    val junitVersion = "5.8.2"
+    val junitVersion: String by rootProject
     dependencies {
         implementation(kotlin("stdlib"))
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
