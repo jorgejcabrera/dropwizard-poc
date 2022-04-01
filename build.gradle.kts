@@ -17,6 +17,10 @@ subprojects {
 
     apply(plugin = "kotlin")
 
+    repositories {
+        mavenCentral()
+    }
+
     val junitVersion = "5.8.2"
     dependencies {
         implementation(kotlin("stdlib"))
