@@ -5,6 +5,7 @@ import javax.ws.rs.WebApplicationException
 
 @Path("/")
 class CalculatorComponent {
+
     @Path("/add")
     @GET
     fun add(@QueryParam("a") a: Double, @QueryParam("b") b: Double): Double {

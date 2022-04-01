@@ -18,13 +18,13 @@ application {
 
 tasks {
     named<JavaExec>("run") {
-        args = listOf("server", "config/local.yaml")
+        args = listOf("server", "config/server_configuration.yaml")
     }
 }
 
 val dropwizardVersion = "2.0.28"
+
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("io.dropwizard:dropwizard-core:$dropwizardVersion")
-
 }
