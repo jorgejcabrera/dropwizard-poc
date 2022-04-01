@@ -1,5 +1,4 @@
 plugins {
-    application
     kotlin("jvm") version "1.6.10"
 }
 
@@ -10,21 +9,22 @@ repositories {
     mavenCentral()
 }
 
-apply(plugin = "application")
-
-application {
-    mainClassName = "to.dev.example.MainAppKt"
-}
-
-tasks {
-    named<JavaExec>("run") {
-        args = listOf("server", "config/server_configuration.yaml")
-    }
-}
-
-val dropwizardVersion = "2.0.28"
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("io.dropwizard:dropwizard-core:$dropwizardVersion")
+}
+
+
+subprojects {
+    group = "to.dev.example"
+    version = "1.0"
+
+    apply(plugin = "kotlin")
+
+    val junitVersion = "5.8.2"
+    dependencies {
+        implementation(kotlin("stdlib"))
+        testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    }
 }
