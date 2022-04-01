@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+
 plugins {
     kotlin("jvm") version "1.6.10"
 }
@@ -8,12 +10,6 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 }
-
-
-dependencies {
-    implementation(kotlin("stdlib"))
-}
-
 
 subprojects {
     group = "to.dev.example"
@@ -26,5 +22,22 @@ subprojects {
         implementation(kotlin("stdlib"))
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    }
+
+    tasks.test {
+        useJUnitPlatform {
+            includeEngines("junit-jupiter")
+            excludeTags("integration-tests")
+        }
+
+        failFast = false
+        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+        testLogging {
+            events = setOf(
+                FAILED,
+                PASSED,
+                SKIPPED
+            )
+        }
     }
 }

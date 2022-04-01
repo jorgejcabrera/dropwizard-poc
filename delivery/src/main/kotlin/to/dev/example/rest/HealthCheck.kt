@@ -6,7 +6,6 @@ class HealthCheck : HealthCheck() {
 
     @Throws(java.lang.Exception::class)
     override fun check(): Result {
-        println("Processing healtcheck")
         return Result.healthy()
     }
 }
