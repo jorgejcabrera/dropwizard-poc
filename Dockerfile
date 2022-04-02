@@ -11,6 +11,8 @@ COPY build.gradle.kts settings.gradle.kts gradlew gradle.properties $APP_HOME
 COPY delivery delivery
 COPY core core
 
+COPY . .
+
 # create application jar
 RUN gradle build -x test --no-daemon
 
@@ -28,9 +30,11 @@ ENV MAX_RAM_PERCENTAGE="-XX:MaxRAMPercentage=70"
 ENV MIN_RAM_PERCENTAGE="-XX:MinRAMPercentage=70"
 
 COPY --from=compiler $APP_HOME/service.jar $APP_HOME/service.jar
+COPY --from=compiler $APP_HOME/delivery/config/server_configuration.yaml $APP_HOME/config.yaml
+
 WORKDIR $APP_HOME
 
 EXPOSE ${SERVER_PORT}
 
 ENV JAVA_OPTS="$SECURITY_OPTS $MAX_RAM_PERCENTAGE $MIN_RAM_PERCENTAGE"
-ENTRYPOINT  exec java $JAVA_OPTS -jar service.jar
+ENTRYPOINT ["java", "-jar", "service.jar", "server", "config.yml"]
