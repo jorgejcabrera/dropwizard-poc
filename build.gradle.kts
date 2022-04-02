@@ -2,6 +2,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 
 plugins {
     kotlin("jvm") version "1.6.10"
+    id("org.jlleitschuh.gradle.ktlint") version "9.2.1" apply false
 }
 
 group = "to.dev.example"
@@ -28,6 +29,7 @@ subprojects {
     version = "1.0"
 
     apply(plugin = "kotlin")
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     repositories {
         mavenCentral()
