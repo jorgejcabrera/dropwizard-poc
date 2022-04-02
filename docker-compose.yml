@@ -3,11 +3,13 @@ version: '3.6'
 services:
 
   app:
+    image: dropwizard-poc
     container_name: dropwizard-poc
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - '8080:8080'
+      - '8081:8081'
     platform: linux/amd64
     restart: always
