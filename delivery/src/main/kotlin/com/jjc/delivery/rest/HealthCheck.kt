@@ -1,4 +1,4 @@
-package to.dev.example.rest
+package com.jjc.delivery.rest
 
 import com.codahale.metrics.health.HealthCheck
 

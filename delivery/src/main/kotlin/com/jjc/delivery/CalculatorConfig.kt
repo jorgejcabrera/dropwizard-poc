@@ -1,4 +1,4 @@
-package to.dev.example
+package com.jjc.delivery
 
 import io.dropwizard.Configuration
 
