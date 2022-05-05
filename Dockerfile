@@ -10,6 +10,7 @@ WORKDIR $APP_HOME
 COPY build.gradle.kts settings.gradle.kts gradlew gradle.properties $APP_HOME
 COPY delivery delivery
 COPY core core
+COPY infrastructure infrastructure
 
 COPY . .
 

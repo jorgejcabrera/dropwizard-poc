@@ -5,10 +5,8 @@ plugins {
 val dropwizardVersion: String by rootProject
 dependencies {
     implementation("io.dropwizard:dropwizard-core:$dropwizardVersion")
-
-
+    implementation(project(":infrastructure"))
     implementation(project(":core"))
-
 }
 
 tasks {
